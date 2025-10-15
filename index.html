@@ -26,17 +26,29 @@
                     <div class="space-y-4">
                         <div class="bg-gray-50 border border-gray-100 rounded-lg p-4">
                             <label for="name" class="text-gray-700 font-medium block">What is your name?</label>
-                            <input id="name" name="name" type="text" placeholder="Your name" class="mt-2 block w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 p-2" />
+                            <input id="name" name="name" type="text" placeholder="Hossein Nourouzi" class="mt-2 block w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 p-2" />
                         </div>
 
                         <div class="bg-gray-50 border border-gray-100 rounded-lg p-4">
                             <label for="funfact" class="text-gray-700 font-medium block">What is a fun fact about yourself?</label>
-                            <input id="funfact" name="funfact" type="text" placeholder="A short fun fact" class="mt-2 block w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 p-2" />
+                            <input id="funfact" name="funfact" type="text" placeholder="I like debugging code." class="mt-2 block w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 p-2" />
                         </div>
 
                         <div class="bg-gray-50 border border-gray-100 rounded-lg p-4">
-                            <label for="look" class="text-gray-700 font-medium block">What do you look like?</label>
-                            <textarea id="look" name="look" rows="3" placeholder="A brief description" class="mt-2 block w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 p-2"></textarea>
+                            <label for="avatar" class="text-gray-700 font-medium block">Upload an avatar (optional)</label>
+                            <div class="mt-2 flex items-center gap-4">
+                                <label class="flex items-center justify-center w-28 h-28 bg-white rounded-md border border-dashed border-gray-200 overflow-hidden">
+                                    <img id="avatarPreview" src="" alt="Avatar preview" class="hidden w-full h-full object-cover" />
+                                    <svg id="avatarPlaceholder" class="w-10 h-10 text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v4m0 0a4 4 0 110 8 4 4 0 010-8zm0 0V4m0 16v-4" />
+                                    </svg>
+                                </label>
+                                <div class="flex-1">
+                                    <input id="avatar" name="avatar" type="file" accept="image/*" class="block w-full text-sm text-gray-700 file:bg-white file:border file:rounded file:px-3 file:py-1 file:border-gray-200 file:text-sm file:cursor-pointer" />
+                                    <p id="avatarHelp" class="text-xs text-gray-500 mt-2">Accepted: PNG, JPG, GIF. Max 2MB.</p>
+                                    <p id="avatarError" class="text-xs text-red-600 mt-1 hidden"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -49,4 +61,59 @@
             </div>
         </div>
     </body>
+    <script>
+        (function(){
+            const input = document.getElementById('avatar');
+            const preview = document.getElementById('avatarPreview');
+            const placeholder = document.getElementById('avatarPlaceholder');
+            const help = document.getElementById('avatarHelp');
+            const error = document.getElementById('avatarError');
+            const MAX_SIZE = 2 * 1024 * 1024; // 2MB
+
+            if (!input) return;
+
+            function showError(msg){
+                error.textContent = msg;
+                error.classList.remove('hidden');
+                help.classList.add('hidden');
+            }
+
+            function clearError(){
+                error.textContent = '';
+                error.classList.add('hidden');
+                help.classList.remove('hidden');
+            }
+
+            input.addEventListener('change', function(e){
+                clearError();
+                const file = input.files && input.files[0];
+                if (!file) {
+                    preview.src = '';
+                    preview.classList.add('hidden');
+                    placeholder.classList.remove('hidden');
+                    return;
+                }
+
+                if (!file.type.startsWith('image/')){
+                    showError('Invalid file type — please choose an image.');
+                    input.value = '';
+                    return;
+                }
+
+                if (file.size > MAX_SIZE){
+                    showError('File is too large — max 2MB.');
+                    input.value = '';
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(ev){
+                    preview.src = ev.target.result;
+                    preview.classList.remove('hidden');
+                    placeholder.classList.add('hidden');
+                };
+                reader.readAsDataURL(file);
+            });
+        })();
+    </script>
 </html>
