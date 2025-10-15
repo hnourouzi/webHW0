@@ -1,1 +1,3 @@
-# webHW0
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/fgo2eXm8)
+
+This repository contains a simple website (HTML, CSS, and assets) created as an exercise for a Web Design course. The files include `index.html`, `style.css`, and an `Assets/` folder with supporting resources.

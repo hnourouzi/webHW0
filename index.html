@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <!-- Tailwind CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>HW0 - Welcome</title>
+    </head>
+    <body class="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+        <div class="max-w-xl w-full">
+            <!-- Invitation card -->
+            <div class="bg-white shadow-lg rounded-xl overflow-hidden ring-1 ring-gray-200">
+                <!-- Banner header with image and overlay text -->
+                <div class="relative h-40 sm:h-48 w-full">
+                    <img src="/Assets/taylor-flowe-4nKOEAQaTgA-unsplash.jpg" alt="Abstract colorful banner" class="absolute inset-0 h-full w-full object-cover" />
+                    <!-- subtle overall overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-transparent pointer-events-none"></div>
+                    <!-- stronger bottom gradient for legibility -->
+                    <div class="absolute inset-x-0 bottom-0 h-24 sm:h-32 bg-gradient-to-t from-black/70 via-black/40 to-transparent pointer-events-none"></div>
+                    <div class="absolute inset-0 flex items-start justify-start p-6 sm:p-8">
+                        <div class="text-white">
+                            <h1 class="text-xl sm:text-2xl font-bold drop-shadow">HW0 : Welcome to Web class</h1>
+                            <p class="text-sm sm:text-base text-white/90 mt-1 drop-shadow">A short introduction card — please fill in your answers below.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6 sm:p-8">
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 border border-gray-100 rounded-lg p-4">
+                            <label for="name" class="text-gray-700 font-medium block">What is your name?</label>
+                            <input id="name" name="name" type="text" placeholder="Your name" class="mt-2 block w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 p-2" />
+                        </div>
+
+                        <div class="bg-gray-50 border border-gray-100 rounded-lg p-4">
+                            <label for="funfact" class="text-gray-700 font-medium block">What is a fun fact about yourself?</label>
+                            <input id="funfact" name="funfact" type="text" placeholder="A short fun fact" class="mt-2 block w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 p-2" />
+                        </div>
+
+                        <div class="bg-gray-50 border border-gray-100 rounded-lg p-4">
+                            <label for="look" class="text-gray-700 font-medium block">What do you look like?</label>
+                            <textarea id="look" name="look" rows="3" placeholder="A brief description" class="mt-2 block w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 p-2"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex items-center justify-between">
+                        <div class="text-sm text-gray-500">Invite a classmate to join the intro!</div>
+                        <button class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-md">Join</button>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-6 py-3 text-xs text-gray-500">HW0 • Welcome card created with Tailwind CDN</div>
+            </div>
+        </div>
+    </body>
+</html>
